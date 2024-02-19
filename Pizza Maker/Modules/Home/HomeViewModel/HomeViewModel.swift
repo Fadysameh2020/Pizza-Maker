@@ -10,8 +10,12 @@ import RxSwift
 import RxCocoa
 
 class HomeViewModel {
+    
     private var sliderTimer: Timer?
     var slides: BehaviorRelay<[Int]> = .init(value: [1])
+    var popularItems: BehaviorRelay<[Product]> = .init(value: [
+        Product(title: "Test"), Product(title: "Test"), Product(title: "Test"), Product(title: "Test"), Product(title: "Test")
+                                                                 ])
     private var currentIndex = 0
     
     //MARK: Public Variables

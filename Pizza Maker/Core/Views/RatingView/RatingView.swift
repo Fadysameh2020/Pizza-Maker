@@ -27,7 +27,7 @@ class RatingView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupUI()
-        configurationWithRating(rating: 3)
+//        configurationWithRating(rating: 3)
     }
     
     func setupUI(){
@@ -40,22 +40,28 @@ class RatingView: UIView {
 //        stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     
-    func configurationWithRating(rating: Int) {
-        //add filled stars
-        if rating > 0 {
-            for _ in 1...rating {
-                let image = generateStarView(.filled)
-                stackView.addArrangedSubview(image)
+    func configurationWithRating(rating: Int, style: Style = .full) {
+        switch style {
+        case .full:
+            //add filled stars
+            if rating > 0 {
+                for _ in 1...rating {
+                    let image = generateStarView(.filled)
+                    stackView.addArrangedSubview(image)
+                }
             }
-        }
-    
-        //add non-filled stars
-        let nonFilledStars = maximumRating - rating
-        if nonFilledStars > 0 {
-            for _ in 1...nonFilledStars {
-                let image = generateStarView(.nonFilled)
-                stackView.addArrangedSubview(image)
+        
+            //add non-filled stars
+            let nonFilledStars = maximumRating - rating
+            if nonFilledStars > 0 {
+                for _ in 1...nonFilledStars {
+                    let image = generateStarView(.nonFilled)
+                    stackView.addArrangedSubview(image)
+                }
             }
+        case .compact:
+            let image = generateStarView(.filled)
+            stackView.addArrangedSubview(image)
         }
         
     }
@@ -69,13 +75,19 @@ class RatingView: UIView {
             starImage = UIImage(named: "star")!
         }
         let image = UIImageView(image: starImage)
-        image.widthAnchor.constraint(lessThanOrEqualToConstant: 10).isActive = true
+        image.contentMode = .scaleAspectFit
+        image.widthAnchor.constraint(equalToConstant: 10).isActive = true
         return image
     }
     
     enum StarType {
         case filled
         case nonFilled
+    }
+    
+    enum Style {
+        case full
+        case compact
     }
     
 }

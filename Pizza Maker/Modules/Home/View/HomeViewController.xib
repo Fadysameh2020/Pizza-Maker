@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="Pizza_Maker" customModuleProvider="target">
             <connections>
+                <outlet property="popularTableView" destination="J9f-sb-aZn" id="RaK-QD-RQm"/>
                 <outlet property="sliderCollectionView" destination="RCV-pi-dhS" id="bZI-Fm-F5p"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -42,14 +43,22 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="J9f-sb-aZn">
+                    <rect key="frame" x="0.0" y="463.5" width="414" height="398.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="J9f-sb-aZn" secondAttribute="bottom" id="3kd-CV-0GT"/>
                 <constraint firstItem="CxY-6B-HBa" firstAttribute="centerX" secondItem="6cx-2k-YHc" secondAttribute="centerX" id="84T-pf-a4M"/>
+                <constraint firstItem="J9f-sb-aZn" firstAttribute="top" secondItem="RCV-pi-dhS" secondAttribute="bottom" id="90l-Ib-L2M"/>
                 <constraint firstItem="6cx-2k-YHc" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1:3" id="Ffm-LK-zJt"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6cx-2k-YHc" secondAttribute="trailing" id="KY5-aW-Psz"/>
                 <constraint firstItem="6cx-2k-YHc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Wh7-MR-M8t"/>
+                <constraint firstItem="J9f-sb-aZn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bgy-gH-n2x"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="J9f-sb-aZn" secondAttribute="trailing" id="eKh-0z-7yY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="RCV-pi-dhS" secondAttribute="trailing" id="fc1-un-0Y0"/>
                 <constraint firstItem="RCV-pi-dhS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="iqx-Ee-Lxp"/>
                 <constraint firstItem="CxY-6B-HBa" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="lsG-sT-q8n"/>

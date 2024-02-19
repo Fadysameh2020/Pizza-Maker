@@ -18,10 +18,17 @@ class HomeViewController: UIViewController {
         }
     }
     
-//    var slides: [Int] = []
+    @IBOutlet weak var popularTableView: UITableView!
+//    {
+//        didSet{
+//            popularTableView.dataSource = self
+//            popularTableView.delegate = self
+//        }
+//    }
     
     var homeVM = HomeViewModel()
     private let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,13 +50,22 @@ extension HomeViewController{
     private func setupUI(){
         registerCells()
         startTimer()
+        setupPopularTableView()
         homeVM.viewDidLoad()
-        
+    }
+    
+    private func setupPopularTableView(){
+        popularTableView.rx.setDelegate(self).disposed(by: disposeBag)
+        homeVM.popularItems.asObservable()
+            .bind(to: popularTableView.rx.items(cellIdentifier: String(describing: PopularTableViewCell.self), cellType: PopularTableViewCell.self)){ index, model, cell in
+                cell.ratingView.configurationWithRating(rating: 5, style: .compact)
+        }.disposed(by: disposeBag)
         
     }
     
     private func registerCells(){
         sliderCollectionView.registerCell(cellClass: SliderCollectionViewCell.self)
+        popularTableView.registerCellNib(cellClass: PopularTableViewCell.self)
     }
     
     private func startTimer(){
@@ -84,7 +100,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(indexPath: indexPath) as SliderCollectionViewCell
-        
+//        cell.ratingView.configurationWithRating(rating: 3)
         return cell
     }
     

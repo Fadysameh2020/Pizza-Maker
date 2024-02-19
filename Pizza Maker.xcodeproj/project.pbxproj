@@ -26,6 +26,9 @@
 		A7A407E42B7E28D8000DA449 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A407E02B7E28D8000DA449 /* UITableView+Extensions.swift */; };
 		A7A407E92B7E3C48000DA449 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A407E82B7E3C48000DA449 /* RatingView.swift */; };
 		A7A407EC2B80EEC3000DA449 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A407EB2B80EEC3000DA449 /* HomeViewModel.swift */; };
+		A7D534102B8312CE0057A327 /* PopularTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D5340E2B8312CE0057A327 /* PopularTableViewCell.swift */; };
+		A7D534112B8312CE0057A327 /* PopularTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7D5340F2B8312CE0057A327 /* PopularTableViewCell.xib */; };
+		A7D534142B831B1E0057A327 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D534132B831B1E0057A327 /* Product.swift */; };
 		B10938388B986840B2BB75E6 /* Pods_Pizza_Maker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACF58A42D6879BB1699B44E /* Pods_Pizza_Maker.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +77,9 @@
 		A7A407E02B7E28D8000DA449 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		A7A407E82B7E3C48000DA449 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		A7A407EB2B80EEC3000DA449 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		A7D5340E2B8312CE0057A327 /* PopularTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularTableViewCell.swift; sourceTree = "<group>"; };
+		A7D5340F2B8312CE0057A327 /* PopularTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopularTableViewCell.xib; sourceTree = "<group>"; };
+		A7D534132B831B1E0057A327 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		B736FACC224DA9122785E549 /* Pods-Pizza Maker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pizza Maker.debug.xcconfig"; path = "Target Support Files/Pods-Pizza Maker/Pods-Pizza Maker.debug.xcconfig"; sourceTree = "<group>"; };
 		E49C3EA84426CEED7F0C236D /* Pods-Pizza MakerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pizza MakerTests.debug.xcconfig"; path = "Target Support Files/Pods-Pizza MakerTests/Pods-Pizza MakerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EACF58A42D6879BB1699B44E /* Pods_Pizza_Maker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pizza_Maker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +161,7 @@
 		A74293142B7E05E10092A3E1 /* Pizza Maker */ = {
 			isa = PBXGroup;
 			children = (
+				A7D534122B831B070057A327 /* Model */,
 				A742934D2B7E13400092A3E1 /* Common */,
 				A7A407E52B7E3BE7000DA449 /* Core */,
 				A74293572B7E23400092A3E1 /* Extensions */,
@@ -215,6 +222,8 @@
 			children = (
 				A74293582B7E23820092A3E1 /* SliderCollectionViewCell.swift */,
 				A74293592B7E23820092A3E1 /* SliderCollectionViewCell.xib */,
+				A7D5340E2B8312CE0057A327 /* PopularTableViewCell.swift */,
+				A7D5340F2B8312CE0057A327 /* PopularTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -277,6 +286,14 @@
 				A7A407EB2B80EEC3000DA449 /* HomeViewModel.swift */,
 			);
 			path = HomeViewModel;
+			sourceTree = "<group>";
+		};
+		A7D534122B831B070057A327 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A7D534132B831B1E0057A327 /* Product.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -391,6 +408,7 @@
 				A742931F2B7E05E40092A3E1 /* Assets.xcassets in Resources */,
 				A74293532B7E138A0092A3E1 /* HomeViewController.xib in Resources */,
 				A742935B2B7E23820092A3E1 /* SliderCollectionViewCell.xib in Resources */,
+				A7D534112B8312CE0057A327 /* PopularTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,10 +543,12 @@
 				A7A407E92B7E3C48000DA449 /* RatingView.swift in Sources */,
 				A74293182B7E05E10092A3E1 /* SceneDelegate.swift in Sources */,
 				A7A407E32B7E28D8000DA449 /* UIColor+Extensions.swift in Sources */,
+				A7D534102B8312CE0057A327 /* PopularTableViewCell.swift in Sources */,
 				A7A407DC2B7E28BC000DA449 /* UICollectionView+Extensions.swift in Sources */,
 				A7A407E12B7E28D8000DA449 /* UIStackView+Extensions.swift in Sources */,
 				A74293522B7E138A0092A3E1 /* HomeViewController.swift in Sources */,
 				A742935A2B7E23820092A3E1 /* SliderCollectionViewCell.swift in Sources */,
+				A7D534142B831B1E0057A327 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
