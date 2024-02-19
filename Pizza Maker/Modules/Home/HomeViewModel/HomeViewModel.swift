@@ -9,7 +9,16 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class HomeViewModel {
+protocol HomeViewModelOutputProtocol {
+    var slideToItem: PublishSubject<Int> { get set }
+}
+
+protocol HomeViewModelInputProtocol {
+    func viewDidLoad()
+    func movetoindex ()
+}
+
+class HomeViewModel: HomeViewModelInputProtocol, HomeViewModelOutputProtocol {
     
     private var sliderTimer: Timer?
     var slides: BehaviorRelay<[Int]> = .init(value: [1])

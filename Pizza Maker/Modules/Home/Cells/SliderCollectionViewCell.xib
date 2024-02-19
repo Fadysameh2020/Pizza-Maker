@@ -105,7 +105,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="13" height="50"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="251" text="20 mins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCA-UT-Xh1">
-                                                                <rect key="frame" x="16" y="0.0" width="38.333333333333343" height="50"/>
+                                                                <rect key="frame" x="16.000000000000004" y="0.0" width="38.333333333333343" height="50"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
