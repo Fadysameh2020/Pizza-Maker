@@ -7,19 +7,20 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 class HomeViewModel {
     private var sliderTimer: Timer?
-    private var slides: [Int] = [1, 2, 3, 4, 5]
+    var slides: BehaviorRelay<[Int]> = .init(value: [1])
     private var currentIndex = 0
     
     //MARK: Public Variables
-    var numberOfItems: Int{
-        return slides.count
-    }
+//    var numberOfItems: Int{
+//        return slides.value.count
+//    }
     
     // inputs
-    var slideToItemAtIndex: ((Int)-> Void)?
+    var slideToItem: PublishSubject<Int> = .init()
 
     // outputs
     func viewDidLoad() {
@@ -27,15 +28,17 @@ class HomeViewModel {
     }
     
     @objc func movetoindex () {
-        if currentIndex < slides.count - 1 {
+        if currentIndex < slides.value.count - 1 {
             currentIndex += 1
         }
         else{
             currentIndex = 0
         }
-        
-        slideToItemAtIndex?(currentIndex)
-        
+        slideToItem.onNext(currentIndex)        
+    }
+    
+    func didSelectItem(){
+        slides.accept([1, 2, 3])
     }
     
     
