@@ -61,7 +61,7 @@ extension HomeViewController{
         popularTableView.rx.setDelegate(self).disposed(by: disposeBag)
         viewModel.popularItems.asObservable()
             .bind(to: popularTableView.rx.items(cellIdentifier: String(describing: PopularTableViewCell.self), cellType: PopularTableViewCell.self)){ index, model, cell in
-                cell.ratingView.configurationWithRating(rating: 5, style: .compact)
+                cell.ratingView.configureWithRating(rating: 5, style: .compact)
         }.disposed(by: disposeBag)
         
 //        popularTableView.rx.modelSelected(Product.self).subscribe { model in

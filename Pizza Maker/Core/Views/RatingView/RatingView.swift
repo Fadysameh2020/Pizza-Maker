@@ -1,20 +1,21 @@
 //
 //  RatingView.swift
-//  Pizza Maker
+//  PizzaWorld
 //
-//  Created by MESHO on 15/02/2024.
+//  Created by Osama on 10/14/20.
 //
 
 import Foundation
 import UIKit
 
+
 class RatingView: UIView {
-    //MARK: UI Private Configuration
+    //MARK: UI Private Configurations
     private let maximumRating = 5
     
     
-    //MARK: UI Public Configuration
-    var rating:Int = 5
+    //MARK: UI Public Configurations
+    var rating: Int = 5
     
     lazy var stackView: UIStackView = {
         let stack = UIStackView()
@@ -27,7 +28,7 @@ class RatingView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupUI()
-//        configurationWithRating(rating: 3)
+//        configureWithRating(rating: 3)
     }
     
     func setupUI(){
@@ -35,26 +36,24 @@ class RatingView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-//        stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     
-    func configurationWithRating(rating: Int, style: Style = .full) {
+    func configureWithRating(rating: Int, style: Style = .full){
         switch style {
         case .full:
-            //add filled stars
+            // Add filled stars
             if rating > 0 {
                 for _ in 1...rating {
                     let image = generateStarView(.filled)
                     stackView.addArrangedSubview(image)
                 }
             }
-        
-            //add non-filled stars
-            let nonFilledStars = maximumRating - rating
-            if nonFilledStars > 0 {
-                for _ in 1...nonFilledStars {
+            
+            // Add Non-filled stars
+            let nonFilledCount = maximumRating - rating
+            if nonFilledCount > 0 {
+                for _ in 1...nonFilledCount {
                     let image = generateStarView(.nonFilled)
                     stackView.addArrangedSubview(image)
                 }
@@ -63,16 +62,15 @@ class RatingView: UIView {
             let image = generateStarView(.filled)
             stackView.addArrangedSubview(image)
         }
-        
     }
     
     private func generateStarView(_ type: StarType) -> UIImageView {
         let starImage: UIImage
         switch type {
         case .filled:
-            starImage = UIImage(named: "filledStar")!
+            starImage = #imageLiteral(resourceName: "filledStar")
         case .nonFilled:
-            starImage = UIImage(named: "star")!
+            starImage = #imageLiteral(resourceName: "star")
         }
         let image = UIImageView(image: starImage)
         image.contentMode = .scaleAspectFit
@@ -84,10 +82,9 @@ class RatingView: UIView {
         case filled
         case nonFilled
     }
-    
+
     enum Style {
         case full
         case compact
     }
-    
 }
