@@ -18,22 +18,24 @@ class MainNavigator: NavigatorProtocol{
     
     enum Destination {
         case home
+        case itemDetails(product: Product)
     }
     
     func viewController(for destination: Destination) -> UIViewController {
+        let view: UIViewController!
         switch destination {
         case .home:
             let viewModel = HomeViewModel()
-            let view = HomeViewController(viewModel: viewModel, coordinator: coordinator)
-            view.coordinator = coordinator
+            view = HomeViewController(viewModel: viewModel, coordinator: coordinator)
+            return view
+            
+        case .itemDetails(let product):
+            let viewModel = ItemDetailsViewModel(product: product)
+            view = ItemDetailsViewController(viewModel: viewModel, coordinator: coordinator)
             return view
         }
         
     }
-
-//    func navigate(to destination: Destination, navigationType: NavigatorType = .push) {
-//        
-//    }
     
     
 }

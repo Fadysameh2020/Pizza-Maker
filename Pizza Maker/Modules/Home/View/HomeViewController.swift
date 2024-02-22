@@ -19,31 +19,12 @@ class HomeViewController: BaseWireframe<HomeViewModel> {
     }
     
     @IBOutlet weak var popularTableView: UITableView!
-//    {
-//        didSet{
-//            popularTableView.dataSource = self
-//            popularTableView.delegate = self
-//        }
-//    }
-    
-//    var homeVM = HomeViewModel()
-//    private let disposeBag = DisposeBag()
-//    
-//    var coordinator: CoordinatorProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
     
-
-//    init() {
-//        super.init(nibName: "HomeViewController", bundle: nil)
-//    }
-    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
     
     override func bind(viewModel: HomeViewModel) {
         viewModel.slideToItem.subscribe { [weak self] index in
@@ -58,6 +39,12 @@ class HomeViewController: BaseWireframe<HomeViewModel> {
             print("hii")
             self.sliderCollectionView.reloadData()
         }.disposed(by: disposeBag)
+        
+        viewModel.navigateToItemDetails.subscribe { [weak self] product in
+            guard let self = self else {return}
+            self.coordinator.Main.navigate(to: .itemDetails(product: product))
+        }.disposed(by: disposeBag)
+
     }
     
     
@@ -75,6 +62,17 @@ extension HomeViewController{
         viewModel.popularItems.asObservable()
             .bind(to: popularTableView.rx.items(cellIdentifier: String(describing: PopularTableViewCell.self), cellType: PopularTableViewCell.self)){ index, model, cell in
                 cell.ratingView.configurationWithRating(rating: 5, style: .compact)
+        }.disposed(by: disposeBag)
+        
+//        popularTableView.rx.modelSelected(Product.self).subscribe { model in
+//            print("item selected")
+//        }.disposed(by: disposeBag)
+
+        popularTableView.rx.itemSelected.subscribe { [weak self] (indexPath) in
+            print("item selected-> \(indexPath)")
+            guard let self = self else {return}
+            self.popularTableView.deselectRow(at: indexPath, animated: true)
+            self.viewModel.didSelectItemAtIndexPath(indexPath)
         }.disposed(by: disposeBag)
         
     }
@@ -101,7 +99,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        viewModel.didSelectItem()
-        coordinator.Main.navigate(to: .home)
+        coordinator.Main.navigate(to: .home, with: .push)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

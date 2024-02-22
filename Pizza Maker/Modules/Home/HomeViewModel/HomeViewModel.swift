@@ -11,19 +11,21 @@ import RxCocoa
 
 protocol HomeViewModelOutputProtocol {
     var slideToItem: PublishSubject<Int> { get set }
+    var navigateToItemDetails: PublishSubject<Product> { get set }
 }
 
 protocol HomeViewModelInputProtocol {
     func viewDidLoad()
     func movetoindex ()
+    func didSelectItemAtIndexPath(_ indexPath: IndexPath)
 }
 
-class HomeViewModel: HomeViewModelInputProtocol, HomeViewModelOutputProtocol {
+class HomeViewModel: ViewModelProtocol, HomeViewModelInputProtocol, HomeViewModelOutputProtocol {
     
     private var sliderTimer: Timer?
-    var slides: BehaviorRelay<[Int]> = .init(value: [1])
+    var slides: BehaviorRelay<[Int]> = .init(value: [1, 2, 3, 4])
     var popularItems: BehaviorRelay<[Product]> = .init(value: [
-        Product(title: "Test"), Product(title: "Test"), Product(title: "Test"), Product(title: "Test"), Product(title: "Test")
+        Product(title: "Pizza"), Product(title: "Pizza Burger"), Product(title: "Pizza Shrimp"), Product(title: "Pizza Beef"), Product(title: "Pizza BBQ")
                                                                  ])
     private var currentIndex = 0
     
@@ -32,10 +34,11 @@ class HomeViewModel: HomeViewModelInputProtocol, HomeViewModelOutputProtocol {
 //        return slides.value.count
 //    }
     
-    // inputs
-    var slideToItem: PublishSubject<Int> = .init()
-
     // outputs
+    var slideToItem: PublishSubject<Int> = .init()
+    var navigateToItemDetails: PublishSubject<Product> = .init()
+
+    // inputs
     func viewDidLoad() {
         sliderTimer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(movetoindex), userInfo: nil, repeats: true)
     }
@@ -50,8 +53,9 @@ class HomeViewModel: HomeViewModelInputProtocol, HomeViewModelOutputProtocol {
         slideToItem.onNext(currentIndex)        
     }
     
-    func didSelectItem(){
-        slides.accept([1, 2, 3])
+    func didSelectItemAtIndexPath(_ indexPath: IndexPath) {
+        let model = popularItems.value[indexPath.row]
+        navigateToItemDetails.onNext(model)
     }
     
     

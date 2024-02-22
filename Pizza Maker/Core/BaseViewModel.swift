@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class BaseViewModel: ViewModel {
+class BaseViewModel: ViewModelProtocol {
     var isLoading: PublishSubject<Bool> = .init()
     var displayError: PublishSubject<String> = .init()
     

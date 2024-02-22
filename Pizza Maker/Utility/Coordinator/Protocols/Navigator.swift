@@ -14,7 +14,7 @@ protocol NavigatorProtocol {
     init(coordinator: CoordinatorProtocol)
     var coordinator: CoordinatorProtocol { get }
     
-    func navigate(to destination: Destination, navigationType: NavigatorType)
+    func navigate(to destination: Destination, with navigationType: NavigatorType)
 }
 
 enum NavigatorType {
@@ -25,7 +25,7 @@ enum NavigatorType {
 }
 
 extension NavigatorProtocol{
-    func navigate(to destination: Destination, navigationType: NavigatorType = .push){
+    func navigate(to destination: Destination, with navigationType: NavigatorType = .push){
         let viewCotroller = self.viewController(for: destination)
 
         switch navigationType {
@@ -37,7 +37,9 @@ extension NavigatorProtocol{
         case .pop:
             coordinator.navigationController?.popViewController(animated: true)
         case .root:
-            coordinator.navigationController?.popToRootViewController(animated: true)
+//            coordinator.navigationController?.popToRootViewController(animated: true)
+            coordinator.navigationController?.setViewControllers([viewCotroller], animated: true)
+
         }
         
     }

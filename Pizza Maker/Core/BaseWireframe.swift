@@ -13,11 +13,11 @@ import RxSwift
 //import RxReachability
 //import Reachability
 
-protocol ViewModel {
+protocol ViewModelProtocol {
     
 }
 
-class BaseWireframe<T>: UIViewController {
+class BaseWireframe<T: ViewModelProtocol>: UIViewController {
     var viewModel: T!
     var coordinator: CoordinatorProtocol!
 
@@ -29,9 +29,6 @@ class BaseWireframe<T>: UIViewController {
         super.viewDidLoad()
         bind(viewModel: viewModel)
         
-//        navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationController?.isNavigationBarHidden = false
-//        navigationItem.hidesBackButton = false
 //        bindStates()
     }
     
@@ -51,7 +48,7 @@ class BaseWireframe<T>: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+//        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
     func bind(viewModel: T){
