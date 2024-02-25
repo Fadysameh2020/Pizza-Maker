@@ -21,7 +21,7 @@ class MainNavigator: NavigatorProtocol{
         case itemDetails(product: Product)
     }
     
-    func viewController(for destination: Destination) -> UIViewController {
+    func viewController(for destination: Destination, coordinator: CoordinatorProtocol) -> UIViewController {
         let view: UIViewController!
         switch destination {
         case .home:

@@ -90,13 +90,13 @@ class CustomTabBarController: UITabBarController {
         var view: UIViewController
         switch item {
         case .Home:
-            view = coordinator.Main.viewController(for: .home)
+            view = coordinator.Main.viewController(for: .home, coordinator: coordinator)
             view.tabBarItem = tabBarItem(for: item)
         case .PizzaMaker:
-            view = coordinator.Main.viewController(for: .home)
+            view = coordinator.Main.viewController(for: .home, coordinator: coordinator)
             view.tabBarItem = tabBarItem(for: item)
         case .Cart:
-            view = coordinator.Main.viewController(for: .home)
+            view = coordinator.Cart.viewController(for: .cart, coordinator: coordinator)
             view.tabBarItem = tabBarItem(for: item)
         }
         

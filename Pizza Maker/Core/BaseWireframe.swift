@@ -39,12 +39,12 @@ class BaseWireframe<T: ViewModelProtocol>: UIViewController {
     }
     
     // Storyboard setup
-//    static func createFromStoryboard(storyboard: AppStoryboard, viewModel: T, coordinator: CoordinatorProtocol) -> Self<T>{
-//        let view = Self.instantiate(fromAppStoryboard: storyboard) as Self<T>
-//        view.coordinator = coordinator
-//        view.viewModel = viewModel
-//        return view
-//    }
+    static func createFromStoryboard(storyboard: AppStoryboard, viewModel: T, coordinator: CoordinatorProtocol) -> BaseWireframe<T>{
+        let view = Self.instantiate(fromAppStoryboard: storyboard) as BaseWireframe<T>
+        view.coordinator = coordinator
+        view.viewModel = viewModel
+        return view
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
