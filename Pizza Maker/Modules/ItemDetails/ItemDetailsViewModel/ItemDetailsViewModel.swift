@@ -32,6 +32,6 @@ class ItemDetailsViewModel: ViewModelProtocol, ItemDetailsViewModelInputProtocol
     }
     
     //outputs
-    var displayMainData: RxSwift.PublishSubject<ProductViewModel> = .init()
+    var displayMainData: PublishSubject<ProductViewModel> = .init()
     
 }

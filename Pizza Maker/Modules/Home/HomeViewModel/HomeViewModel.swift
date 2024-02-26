@@ -25,8 +25,8 @@ class HomeViewModel: ViewModelProtocol, HomeViewModelInputProtocol, HomeViewMode
     private var sliderTimer: Timer?
     var slides: BehaviorRelay<[Int]> = .init(value: [1, 2, 3, 4])
     var popularItems: BehaviorRelay<[Product]> = .init(value: [
-        Product(title: "Pizza"), Product(title: "Pizza Burger"), Product(title: "Pizza Shrimp"), Product(title: "Pizza Beef"), Product(title: "Pizza BBQ")
-                                                                 ])
+        Product(title: "Pizza", rating: 5, price: 20.5), Product(title: "Pizza Burger", rating: 5, price: 20.5), Product(title: "Pizza Shrimp", rating: 5, price: 20.5), Product(title: "Pizza Beef", rating: 5, price: 20.5), Product(title: "Pizza BBQ", rating: 5, price: 20.5)
+    ])
     private var currentIndex = 0
     
     //MARK: Public Variables

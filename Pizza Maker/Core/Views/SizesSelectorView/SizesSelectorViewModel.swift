@@ -19,6 +19,7 @@ protocol SizesSelectorViewModelOutputs {
 }
 
 class SizesSelectorViewModel: ViewModelProtocol, SizesSelectorViewModelInputs, SizesSelectorViewModelOutputs {
+    
     var input: SizesSelectorViewModelInputs {
         return self
     }
