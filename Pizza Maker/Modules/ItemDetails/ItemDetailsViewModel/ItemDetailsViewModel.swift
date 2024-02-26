@@ -15,9 +15,12 @@ protocol ItemDetailsViewModelOutputProtocol {
 
 protocol ItemDetailsViewModelInputProtocol {
     func viewDidLoad()
+    func didPressAddToCart()
 }
 
-class ItemDetailsViewModel: ViewModelProtocol, ItemDetailsViewModelInputProtocol, ItemDetailsViewModelOutputProtocol {
+protocol ItemDetailsViewModelProtocol: ViewModelProtocol, ItemDetailsViewModelInputProtocol, ItemDetailsViewModelOutputProtocol {}
+
+class ItemDetailsViewModel: ItemDetailsViewModelProtocol {
     
     let product: Product
     
@@ -25,13 +28,19 @@ class ItemDetailsViewModel: ViewModelProtocol, ItemDetailsViewModelInputProtocol
         self.product = product
     }
     
+    //outputs
+    var displayMainData: PublishSubject<ProductViewModel> = .init()
+    
+    
     //inputs
     func viewDidLoad() {
         let productViewModel = ProductViewModel(product)
         displayMainData.onNext(productViewModel)
     }
     
-    //outputs
-    var displayMainData: PublishSubject<ProductViewModel> = .init()
+    func didPressAddToCart() {
+        CartManager.shared.addProduct(product: product)
+    }
+    
     
 }

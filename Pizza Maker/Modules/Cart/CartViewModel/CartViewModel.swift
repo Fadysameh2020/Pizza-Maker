@@ -15,6 +15,8 @@ protocol CartViewModelInputs {
 
 protocol CartViewModelOutputs {
     var cartItemObservable: Observable<[CartItemViewModel]> { get }
+    var cartHeaderDidChangeObservable: Observable<CartHeaderViewModel> { get }
+    func bind()
 }
 
 protocol CartViewModelProtocol: ViewModelProtocol, CartViewModelInputs, CartViewModelOutputs {
@@ -23,13 +25,14 @@ protocol CartViewModelProtocol: ViewModelProtocol, CartViewModelInputs, CartView
 }
 
 class CartViewModel: CartViewModelProtocol {
-    private var cartItems: BehaviorRelay<[CartItemViewModel]> = .init(value: [
-        .init(.init(product: .init(title: "Product", rating: 5, price: 22.5), notes: "Notes")),
-        .init(.init(product: .init(title: "Product", rating: 5, price: 22.5), notes: "Notes")),
-        .init(.init(product: .init(title: "Product", rating: 5, price: 22.5), notes: "Notes")),
-    ])
+    private var cartItems: BehaviorRelay<[CartItemViewModel]> = .init(value: [])
     
+    private var cartHeader: PublishSubject<CartHeaderViewModel> = .init()
     
+    let disposeBag = {
+       return DisposeBag()
+    }()
+        
     var input: CartViewModelInputs {
         return self
     }
@@ -38,10 +41,25 @@ class CartViewModel: CartViewModelProtocol {
     }
     
     //outputs
+    var cartHeaderDidChangeObservable: Observable<CartHeaderViewModel>
     var cartItemObservable: Observable<[CartItemViewModel]>
     
+    var cartHeaderViewModel: CartHeaderViewModel?
+    
     init() {
+        cartHeaderDidChangeObservable = cartHeader.asObservable()
         cartItemObservable = cartItems.asObservable()
+        bind()
+    }
+    
+    func bind(){
+        CartManager.shared.itemsObservable.subscribe { [weak self] (items) in
+            guard let self = self else { return }
+            let mappedItems = items.map(CartItemViewModel.init)
+            self.cartHeaderViewModel = .init()
+            self.cartHeader.onNext(cartHeaderViewModel!)
+            self.cartItems.accept(mappedItems)
+        }.disposed(by: disposeBag)
     }
     
 }

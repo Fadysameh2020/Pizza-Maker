@@ -27,8 +27,15 @@ class CartViewController: BaseWireframe<CartViewModel>{
     private func configureTableView(){
         registerCells()
         tableView.rx.setDelegate(self).disposed(by: disposeBag)
-        viewModel.output.cartItemObservable.bind(to: tableView.rx.items(cellIdentifier: String(describing: CartItemCell.self), cellType: CartItemCell.self)){ (index, model, cell) in
+        viewModel.output.cartItemObservable
+            .bind(to: tableView.rx.items(cellIdentifier: String(describing: CartItemCell.self), cellType: CartItemCell.self)){ (index, model, cell) in
             cell.configure(with: model)
+        }.disposed(by: disposeBag)
+        
+        viewModel.output.cartHeaderDidChangeObservable
+            .subscribe {[weak self] (viewModel) in
+                guard let self = self else {return}
+                self.tableView.reloadData()
         }.disposed(by: disposeBag)
         
     }
@@ -56,8 +63,9 @@ extension CartViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeue() as CartHeaderCell
-        
-        
+        if let cartHeaderViewModel = viewModel.cartHeaderViewModel {
+            cell.configure(with: cartHeaderViewModel)
+        }
         return cell
     }
     

@@ -30,6 +30,12 @@ class ItemDetailsViewController: BaseWireframe<ItemDetailsViewModel> {
 
     }
     
+    
+    
+    @IBAction func didPressAddToCart(_ sender: PizzaButton) {
+        viewModel.didPressAddToCart()
+    }
+    
 
 
 }

@@ -111,6 +111,9 @@
                                         <constraint firstAttribute="height" constant="50" id="TeR-vh-PFF"/>
                                     </constraints>
                                     <state key="normal" title="ADD TO CART +"/>
+                                    <connections>
+                                        <action selector="didPressAddToCart:" destination="-1" eventType="touchUpInside" id="PqU-ac-Q0X"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>

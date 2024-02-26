@@ -9,10 +9,10 @@ import UIKit
 
 class CartItemCell: UITableViewCell {
     
-    @IBOutlet weak var img: UIImageView!
-    @IBOutlet weak var itemLabel: UILabel!
-    @IBOutlet weak var notesLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet private weak var img: UIImageView!
+    @IBOutlet private weak var itemLabel: UILabel!
+    @IBOutlet private weak var notesLabel: UILabel!
+    @IBOutlet private weak var priceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,7 +20,9 @@ class CartItemCell: UITableViewCell {
     }
     
     func configure(with viewModel: CartItemViewModel){
-        
+        itemLabel.text = viewModel.topString
+        notesLabel.text = viewModel.notesString
+        priceLabel.text = viewModel.price
     }
     
 

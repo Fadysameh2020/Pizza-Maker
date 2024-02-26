@@ -16,6 +16,11 @@ class CartHeaderCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func configure(with viewModel: CartHeaderViewModel){
+        itemsCountLabel.text = viewModel.itemsCount
+        totalCostLabel.text = viewModel.totalCost
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
