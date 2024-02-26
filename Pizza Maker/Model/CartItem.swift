@@ -11,10 +11,5 @@ struct CartItem {
     var product: Product
     var notes: String?
     var quantity: Int = 1
-
-//    init(product: Product, notes: String) {
-//        self.product = product
-//        self.notes = notes
-//    }
     
 }

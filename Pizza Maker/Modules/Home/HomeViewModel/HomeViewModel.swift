@@ -12,6 +12,8 @@ import RxCocoa
 protocol HomeViewModelOutputProtocol {
     var slideToItem: PublishSubject<Int> { get set }
     var navigateToItemDetails: PublishSubject<Product> { get set }
+    func sliderViewModelAtIndexPath(_ indexPath: IndexPath) -> SliderViewModel
+    func popularItemsViewModelAtIndexPath(_ indexPath: IndexPath) -> PopularItemViewModel
 }
 
 protocol HomeViewModelInputProtocol {
@@ -20,19 +22,23 @@ protocol HomeViewModelInputProtocol {
     func didSelectItemAtIndexPath(_ indexPath: IndexPath)
 }
 
-class HomeViewModel: ViewModelProtocol, HomeViewModelInputProtocol, HomeViewModelOutputProtocol {
+protocol HomeViewModelProtocol: HomeViewModelInputProtocol, HomeViewModelOutputProtocol {}
+
+class HomeViewModel: ViewModelProtocol, HomeViewModelProtocol {
     
     private var sliderTimer: Timer?
-    var slides: BehaviorRelay<[Int]> = .init(value: [1, 2, 3, 4])
-    var popularItems: BehaviorRelay<[Product]> = .init(value: [
-        Product(title: "Pizza", rating: 5, price: 10), Product(title: "Pizza Burger", rating: 5, price: 20), Product(title: "Pizza Shrimp", rating: 5, price: 30), Product(title: "Pizza Beef", rating: 5, price: 40.95), Product(title: "Pizza BBQ", rating: 5, price: 50.5)
-    ])
+    var slides: BehaviorRelay<[SliderViewModel]> = .init(value: [])
+    var items: BehaviorRelay<[PopularItemViewModel]> = .init(value: [])
+
+    var popularItems: BehaviorRelay<[ProductViewModel]> = .init(value: [])
+    private var popularItemsList: [Product] = []
+    
     private var currentIndex = 0
     
     //MARK: Public Variables
-//    var numberOfItems: Int{
-//        return slides.value.count
-//    }
+    var numberOfItems: Int{
+        return slides.value.count
+    }
     
     // outputs
     var slideToItem: PublishSubject<Int> = .init()
@@ -41,6 +47,8 @@ class HomeViewModel: ViewModelProtocol, HomeViewModelInputProtocol, HomeViewMode
     // inputs
     func viewDidLoad() {
         sliderTimer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(movetoindex), userInfo: nil, repeats: true)
+        fetchSliderData()
+        fetchPopularData()
     }
     
     @objc func movetoindex () {
@@ -54,8 +62,46 @@ class HomeViewModel: ViewModelProtocol, HomeViewModelInputProtocol, HomeViewMode
     }
     
     func didSelectItemAtIndexPath(_ indexPath: IndexPath) {
-        let model = popularItems.value[indexPath.row]
+        let product = popularItems.value[indexPath.row]
+        let model = product.product
         navigateToItemDetails.onNext(model)
+    }
+    
+    // Network Calls
+    private func fetchSliderData(){
+        NetworkClient().performRequest([Slider].self, router: MainRouter.slider) { [weak self] (result) in
+            guard let self = self else {return}
+            switch result{
+            case .success(let data):
+                let slidesModels = data.data
+                self.slides.accept(slidesModels.map(SliderViewModel.init))
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+
+    }
+    
+    private func fetchPopularData(){
+        NetworkClient().performRequest([Product].self, router: FeedRouter.popular) { [weak self] (result) in
+            guard let self = self else {return}
+            switch result{
+            case .success(let data):
+                let slidesModels = data.data
+                self.popularItems.accept(slidesModels.map(ProductViewModel.init))
+                self.items.accept(slidesModels.map(PopularItemViewModel.init))
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func sliderViewModelAtIndexPath(_ indexPath: IndexPath) -> SliderViewModel{
+        return slides.value[indexPath.row]
+    }
+    
+    func popularItemsViewModelAtIndexPath(_ indexPath: IndexPath) -> PopularItemViewModel{
+        return items.value[indexPath.row]
     }
     
     

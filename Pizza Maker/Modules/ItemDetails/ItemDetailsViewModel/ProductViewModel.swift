@@ -9,9 +9,10 @@ import Foundation
 
 class ProductViewModel {
     let mainTitle: String
-    
+    let product: Product // to be removed
     init(_ product: Product) {
         self.mainTitle = product.title
+        self.product = product // to be removed
     }
     
 }

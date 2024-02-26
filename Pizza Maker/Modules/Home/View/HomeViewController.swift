@@ -36,11 +36,10 @@ class HomeViewController: BaseWireframe<HomeViewModel> {
 
         viewModel.slides.subscribe { [weak self] (_) in
             guard let self = self else {return}
-            print("hii")
             self.sliderCollectionView.reloadData()
         }.disposed(by: disposeBag)
         
-        viewModel.navigateToItemDetails.subscribe { [weak self] product in
+        viewModel.navigateToItemDetails.asObservable().subscribe { [weak self] product in
             guard let self = self else {return}
             self.coordinator.Main.navigate(to: .itemDetails(product: product))
         }.disposed(by: disposeBag)
@@ -52,6 +51,8 @@ class HomeViewController: BaseWireframe<HomeViewModel> {
 
 extension HomeViewController{
     private func setupUI(){
+        sliderCollectionView.delegate = self
+        sliderCollectionView.dataSource = self
         registerCells()
         setupPopularTableView()
         viewModel.viewDidLoad()
@@ -60,8 +61,11 @@ extension HomeViewController{
     private func setupPopularTableView(){
         popularTableView.rx.setDelegate(self).disposed(by: disposeBag)
         viewModel.popularItems.asObservable()
-            .bind(to: popularTableView.rx.items(cellIdentifier: String(describing: PopularTableViewCell.self), cellType: PopularTableViewCell.self)){ index, model, cell in
+            .bind(to: popularTableView.rx.items(cellIdentifier: String(describing: PopularTableViewCell.self), cellType: PopularTableViewCell.self)){ [weak self] index, model, cell in
+                guard let self = self else {return}
                 cell.ratingView.configureWithRating(rating: 5, style: .compact)
+                cell.configure( self.viewModel.popularItemsViewModelAtIndexPath(IndexPath(item: index, section: 0)))
+                
         }.disposed(by: disposeBag)
         
 //        popularTableView.rx.modelSelected(Product.self).subscribe { model in
@@ -88,12 +92,12 @@ extension HomeViewController{
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.slides.value.count
+        return viewModel.numberOfItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(indexPath: indexPath) as SliderCollectionViewCell
-        
+        cell.configure(viewModel.sliderViewModelAtIndexPath(indexPath))
         return cell
     }
     

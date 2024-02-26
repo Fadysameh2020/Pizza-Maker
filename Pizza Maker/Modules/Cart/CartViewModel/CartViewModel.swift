@@ -16,7 +16,8 @@ protocol CartViewModelInputs {
 protocol CartViewModelOutputs {
     var cartItemObservable: Observable<[CartItemViewModel]> { get }
     var cartHeaderDidChangeObservable: Observable<CartHeaderViewModel> { get }
-    func bind()
+//    func bind()
+    func didDeleteItem(at indexPath: IndexPath)
 }
 
 protocol CartViewModelProtocol: ViewModelProtocol, CartViewModelInputs, CartViewModelOutputs {
@@ -60,6 +61,11 @@ class CartViewModel: CartViewModelProtocol {
             self.cartHeader.onNext(cartHeaderViewModel!)
             self.cartItems.accept(mappedItems)
         }.disposed(by: disposeBag)
+    }
+    
+    // inputs
+    func didDeleteItem(at indexPath: IndexPath) {
+//        CartManager.shared.delete(product: items[indexPath.row].product)
     }
     
 }

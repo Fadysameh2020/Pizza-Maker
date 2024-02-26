@@ -8,6 +8,11 @@ target 'Pizza Maker' do
   # Pods for Pizza Maker
 pod 'RxSwift'
 pod 'RxCocoa'
+pod 'UITextView+Placeholder'
+pod 'Alamofire'
+pod 'Toast-Swift'
+pod 'RxReachability'
+pod 'Kingfisher'
   target 'Pizza MakerTests' do
     inherit! :search_paths
     # Pods for testing

@@ -28,7 +28,6 @@ class RatingView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupUI()
-//        configureWithRating(rating: 3)
     }
     
     func setupUI(){

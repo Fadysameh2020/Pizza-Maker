@@ -176,7 +176,12 @@
             </constraints>
             <size key="customSize" width="382" height="539"/>
             <connections>
+                <outlet property="categoryLabel" destination="HPL-Cg-vbb" id="N5J-ZB-Q0Q"/>
+                <outlet property="cookTimeLabel" destination="rCA-UT-Xh1" id="4SG-AZ-XhL"/>
+                <outlet property="orderNowButton" destination="4fy-pZ-u32" id="1MJ-Kf-IfR"/>
                 <outlet property="ratingView" destination="tFS-BW-Mpz" id="ggi-OM-wpD"/>
+                <outlet property="sliderImage" destination="1gC-cA-T7z" id="DBe-LX-CdI"/>
+                <outlet property="titleLabel" destination="ghS-Ye-B1O" id="qrY-kK-S0j"/>
             </connections>
             <point key="canvasLocation" x="308.39694656488547" y="186.26760563380282"/>
         </collectionViewCell>
