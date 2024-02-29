@@ -24,7 +24,7 @@ protocol HomeViewModelInputProtocol {
 
 protocol HomeViewModelProtocol: HomeViewModelInputProtocol, HomeViewModelOutputProtocol {}
 
-class HomeViewModel: ViewModelProtocol, HomeViewModelProtocol {
+class HomeViewModel: BaseViewModel, HomeViewModelProtocol {
     
     private var sliderTimer: Timer?
     var slides: BehaviorRelay<[SliderViewModel]> = .init(value: [])
@@ -34,6 +34,15 @@ class HomeViewModel: ViewModelProtocol, HomeViewModelProtocol {
     private var popularItemsList: [Product] = []
     
     private var currentIndex = 0
+    
+    let disposeBag = DisposeBag()
+    
+    let homeRepository: HomeRepositoryProtocol
+    
+    init(homeRepository: HomeRepositoryProtocol = HomeRepositoryImplementation()) {
+        self.homeRepository = homeRepository
+    }
+    
     
     //MARK: Public Variables
     var numberOfItems: Int{
@@ -52,6 +61,7 @@ class HomeViewModel: ViewModelProtocol, HomeViewModelProtocol {
     }
     
     @objc func movetoindex () {
+        guard slides.value.count > 0 else { return }
         if currentIndex < slides.value.count - 1 {
             currentIndex += 1
         }
@@ -62,6 +72,7 @@ class HomeViewModel: ViewModelProtocol, HomeViewModelProtocol {
     }
     
     func didSelectItemAtIndexPath(_ indexPath: IndexPath) {
+        guard popularItems.value.count > 0 else { return }
         let product = popularItems.value[indexPath.row]
         let model = product.product
         navigateToItemDetails.onNext(model)
@@ -69,31 +80,38 @@ class HomeViewModel: ViewModelProtocol, HomeViewModelProtocol {
     
     // Network Calls
     private func fetchSliderData(){
-        NetworkClient().performRequest([Slider].self, router: MainRouter.slider) { [weak self] (result) in
+        isLoading.onNext(true)
+        homeRepository.fetchSliderData().subscribe { [weak self] (items) in
             guard let self = self else {return}
-            switch result{
-            case .success(let data):
-                let slidesModels = data.data
-                self.slides.accept(slidesModels.map(SliderViewModel.init))
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+            self.slides.accept(items.map(SliderViewModel.init))
+            self.isLoading.onNext(false)
+        } onError: { (error) in
+            self.displayError.onNext("I got error.... \(error.localizedDescription)")
+            print("I got error.... \(error.localizedDescription) ")
+            self.isLoading.onNext(false)
+        } onCompleted: {
+            self.isLoading.onNext(false)
+        }.disposed(by: disposeBag)
 
     }
     
+    
     private func fetchPopularData(){
-        NetworkClient().performRequest([Product].self, router: FeedRouter.popular) { [weak self] (result) in
+        isLoading.onNext(true)
+        homeRepository.fetchPopularItemsData().subscribe { [weak self] (items) in
             guard let self = self else {return}
-            switch result{
-            case .success(let data):
-                let slidesModels = data.data
-                self.popularItems.accept(slidesModels.map(ProductViewModel.init))
-                self.items.accept(slidesModels.map(PopularItemViewModel.init))
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+            let slidesModels = items
+            self.popularItems.accept(slidesModels.map(ProductViewModel.init))
+            self.items.accept(slidesModels.map(PopularItemViewModel.init))
+            self.isLoading.onNext(false)
+        } onError: { (error) in
+            self.displayError.onNext("I got error.... \(error.localizedDescription)")
+            print("I got error.... \(error.localizedDescription) ")
+        } onCompleted: {
+            self.isLoading.onNext(false)
+        }.disposed(by: disposeBag)
+        
+
     }
     
     func sliderViewModelAtIndexPath(_ indexPath: IndexPath) -> SliderViewModel{

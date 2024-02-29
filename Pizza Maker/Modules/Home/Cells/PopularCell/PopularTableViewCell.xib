@@ -30,22 +30,22 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ciw-Oq-6fe">
-                                <rect key="frame" x="125.33333333333334" y="10" width="331.66666666666663" height="80"/>
+                                <rect key="frame" x="125.33333333333334" y="10" width="321.66666666666663" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUk-hk-Ieo" userLabel="Title Label">
-                                        <rect key="frame" x="0.0" y="0.0" width="331.66666666666669" height="14.333333333333334"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUk-hk-Ieo" userLabel="Title Label">
+                                        <rect key="frame" x="0.0" y="0.0" width="321.66666666666669" height="16"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWs-fN-Lhm">
-                                        <rect key="frame" x="0.0" y="14.333333333333334" width="331.66666666666669" height="6.6666666666666661"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWs-fN-Lhm">
+                                        <rect key="frame" x="0.0" y="16" width="321.66666666666669" height="5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="seu-au-hXh">
-                                        <rect key="frame" x="0.0" y="21" width="331.66666666666669" height="59"/>
+                                        <rect key="frame" x="0.0" y="21" width="321.66666666666669" height="59"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Wkz-sb-jOY">
                                                 <rect key="frame" x="0.0" y="0.0" width="112.66666666666667" height="59"/>
@@ -96,13 +96,13 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="eUk-hk-Ieo" firstAttribute="height" secondItem="ciw-Oq-6fe" secondAttribute="height" multiplier="0.18" id="0fx-6e-B2v"/>
+                                    <constraint firstItem="eUk-hk-Ieo" firstAttribute="height" secondItem="ciw-Oq-6fe" secondAttribute="height" multiplier="0.2" id="0fx-6e-B2v"/>
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wVt-c2-iPo" customClass="RatingView" customModule="Pizza_Maker" customModuleProvider="target">
-                                <rect key="frame" x="467" y="10" width="40" height="25"/>
+                                <rect key="frame" x="457" y="10" width="50" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="11L-d3-aaB"/>
+                                    <constraint firstAttribute="width" constant="50" id="11L-d3-aaB"/>
                                     <constraint firstAttribute="height" constant="25" id="Ha0-w3-j0I"/>
                                 </constraints>
                             </view>

@@ -18,9 +18,9 @@ protocol ItemDetailsViewModelInputProtocol {
     func didPressAddToCart()
 }
 
-protocol ItemDetailsViewModelProtocol: ViewModelProtocol, ItemDetailsViewModelInputProtocol, ItemDetailsViewModelOutputProtocol {}
+protocol ItemDetailsViewModelProtocol: ItemDetailsViewModelInputProtocol, ItemDetailsViewModelOutputProtocol {}
 
-class ItemDetailsViewModel: ItemDetailsViewModelProtocol {
+class ItemDetailsViewModel: BaseViewModel, ItemDetailsViewModelProtocol {
     
     let product: Product
     

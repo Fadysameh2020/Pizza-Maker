@@ -9,15 +9,15 @@ import Foundation
 import UIKit
 import RxCocoa
 import RxSwift
-//import Toast_Swift
-//import RxReachability
-//import Reachability
+import Toast_Swift
+import RxReachability
+import Reachability
 
 protocol ViewModelProtocol {
     
 }
 
-class BaseWireframe<T: ViewModelProtocol>: UIViewController {
+class BaseWireframe<T: BaseViewModel>: UIViewController {
     var viewModel: T!
     var coordinator: CoordinatorProtocol!
 
@@ -28,8 +28,7 @@ class BaseWireframe<T: ViewModelProtocol>: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind(viewModel: viewModel)
-        
-//        bindStates()
+        bindStates()
     }
     
     init(viewModel: T, coordinator: CoordinatorProtocol) {
@@ -48,7 +47,6 @@ class BaseWireframe<T: ViewModelProtocol>: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
     func bind(viewModel: T){
@@ -59,28 +57,37 @@ class BaseWireframe<T: ViewModelProtocol>: UIViewController {
         super.init(coder: coder)
     }
     
-//    func bindStates(){
-//        viewModel.displayError.subscribe { [weak self] (text) in
-//            self?.displayError(text: text)
-//        }.disposed(by: disposeBag)
-//        
-//        viewModel.isLoading.subscribe { [weak self] (isLoading) in
+    func bindStates(){
+        viewModel.displayError
+            .subscribe { [weak self] (text) in
+            guard let self = self else {return}
+            self.displayError(text: text)
+        }.disposed(by: disposeBag)
+        
+        viewModel.isLoading
+            .subscribe { [weak self] (isLoading) in
+            guard let self = self else {return}
 //            guard let isLoading = isLoading.element else { return }
-//            if(isLoading){
-//                self?.view.makeToastActivity(.center)
-//            } else {
-//                self?.view.hideToastActivity()
-//            }
-//        }.disposed(by: disposeBag)
-//
-//        
-//        // reachability state binding
-//        Reachability.rx.isReachable.subscribe(onNext: { isReachable in
-//            if(isReachable == false){
-//                self.displayError(text: "No network found...")
-//            }
-//        }).disposed(by: disposeBag)
-//    }
+            if(isLoading){
+                self.view.makeToastActivity(.center)
+            } else {
+                self.view.hideToastActivity()
+            }
+        }.disposed(by: disposeBag)
+
+        // reachability state binding
+        Reachability.rx.isReachable
+            .subscribe(onNext: { [weak self] isReachable in
+            guard let self = self else {return}
+            if(!isReachable){
+                self.displayError(text: "No network found...")
+            }
+        }).disposed(by: disposeBag)
+    }
+    
+    
+    
+    
 }
 
 extension BaseWireframe {

@@ -20,12 +20,12 @@ protocol CartViewModelOutputs {
     func didDeleteItem(at indexPath: IndexPath)
 }
 
-protocol CartViewModelProtocol: ViewModelProtocol, CartViewModelInputs, CartViewModelOutputs {
+protocol CartViewModelProtocol: CartViewModelInputs, CartViewModelOutputs {
     var input: CartViewModelInputs { get }
     var output: CartViewModelOutputs { get }
 }
 
-class CartViewModel: CartViewModelProtocol {
+class CartViewModel: BaseViewModel, CartViewModelProtocol {
     private var cartItems: BehaviorRelay<[CartItemViewModel]> = .init(value: [])
     
     private var cartHeader: PublishSubject<CartHeaderViewModel> = .init()
@@ -47,9 +47,11 @@ class CartViewModel: CartViewModelProtocol {
     
     var cartHeaderViewModel: CartHeaderViewModel?
     
-    init() {
+    override init() {
         cartHeaderDidChangeObservable = cartHeader.asObservable()
         cartItemObservable = cartItems.asObservable()
+        
+        super.init()
         bind()
     }
     

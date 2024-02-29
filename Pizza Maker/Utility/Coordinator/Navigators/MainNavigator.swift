@@ -25,6 +25,8 @@ class MainNavigator: NavigatorProtocol{
         let view: UIViewController!
         switch destination {
         case .home:
+//            let homeRepo = HomeRepositoryImplementation()
+//            let viewModel = HomeViewModel(homeRepository: homeRepo)
             let viewModel = HomeViewModel()
             view = HomeViewController(viewModel: viewModel, coordinator: coordinator)
             return view
