@@ -76,7 +76,7 @@ class CustomTabBarController: UITabBarController {
     
     @objc func didSelectMiddleButton(){
         print("pressed middle butto")
-//        selectedIndex = TabBarItem.PizzaMaker.rawValue
+        selectedIndex = TabBarItem.PizzaMaker.rawValue
     }
     
     private func setupTabBarItem(){
@@ -93,8 +93,9 @@ class CustomTabBarController: UITabBarController {
             view = coordinator.Main.viewController(for: .home, coordinator: coordinator)
             view.tabBarItem = tabBarItem(for: item)
         case .PizzaMaker:
-            view = coordinator.Main.viewController(for: .home, coordinator: coordinator)
-            view.tabBarItem = tabBarItem(for: item)
+            view = coordinator.Pizza.viewController(for: .pizzaMakerOptions, coordinator: coordinator)
+//            let view = UIViewController()
+            return view
         case .Cart:
             view = coordinator.Cart.viewController(for: .cart, coordinator: coordinator)
             view.tabBarItem = tabBarItem(for: item)

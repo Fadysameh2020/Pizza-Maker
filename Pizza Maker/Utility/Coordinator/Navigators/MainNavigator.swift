@@ -27,7 +27,9 @@ class MainNavigator: NavigatorProtocol{
         case .home:
 //            let homeRepo = HomeRepositoryImplementation()
 //            let viewModel = HomeViewModel(homeRepository: homeRepo)
-            let viewModel = HomeViewModel()
+            let homeRepo = HomeRepositoryImplementation()
+            let homeUseCase = HomeUseCase(homeRepository: homeRepo)
+            let viewModel = HomeViewModel(homeUseCase: homeUseCase)
             view = HomeViewController(viewModel: viewModel, coordinator: coordinator)
             return view
             

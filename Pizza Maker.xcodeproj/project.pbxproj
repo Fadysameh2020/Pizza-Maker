@@ -50,6 +50,24 @@
 		A7B5D0B82B8CB7DB00313232 /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B5D0B72B8CB7DB00313232 /* HomeUseCase.swift */; };
 		A7B5D0BA2B8CB7F000313232 /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B5D0B92B8CB7F000313232 /* HomeRepository.swift */; };
 		A7B5D0BC2B8CB80200313232 /* PizzaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B5D0BB2B8CB80200313232 /* PizzaRepository.swift */; };
+		A7B69C6C2B902DC2004D836A /* PizzaMakerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B69C6A2B902DC2004D836A /* PizzaMakerVC.swift */; };
+		A7B69C6D2B902DC2004D836A /* PizzaMakerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7B69C6B2B902DC2004D836A /* PizzaMakerVC.xib */; };
+		A7B69C722B902DFF004D836A /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B69C702B902DFF004D836A /* CategoryCell.swift */; };
+		A7B69C732B902DFF004D836A /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7B69C712B902DFF004D836A /* CategoryCell.xib */; };
+		A7B69C762B902E60004D836A /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B69C742B902E60004D836A /* ItemCell.swift */; };
+		A7B69C772B902E60004D836A /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7B69C752B902E60004D836A /* ItemCell.xib */; };
+		A7B69C792B902EAD004D836A /* CategoriesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B69C782B902EAD004D836A /* CategoriesDataSource.swift */; };
+		A7B69C7B2B902ED1004D836A /* CategoriesItemsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B69C7A2B902ED1004D836A /* CategoriesItemsDataSource.swift */; };
+		A7B69C7D2B902EFE004D836A /* PizzaMakerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B69C7C2B902EFE004D836A /* PizzaMakerViewModel.swift */; };
+		A7B69C7F2B902F20004D836A /* PizzaCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B69C7E2B902F20004D836A /* PizzaCategoryViewModel.swift */; };
+		A7B69C812B902F4C004D836A /* PizzaCategoryItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B69C802B902F4C004D836A /* PizzaCategoryItemViewModel.swift */; };
+		A7B69C832B902F67004D836A /* PizzaOptionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B69C822B902F67004D836A /* PizzaOptionsViewModel.swift */; };
+		A7B69C862B902F9C004D836A /* PizzaOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B69C852B902F9C004D836A /* PizzaOptions.swift */; };
+		A7B69C882B902FB0004D836A /* PizzaCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B69C872B902FB0004D836A /* PizzaCategory.swift */; };
+		A7B69C8B2B90304F004D836A /* PizzaMakerOptionsSelectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B69C892B90304F004D836A /* PizzaMakerOptionsSelectorVC.swift */; };
+		A7B69C8C2B90304F004D836A /* PizzaMakerOptionsSelectorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7B69C8A2B90304F004D836A /* PizzaMakerOptionsSelectorVC.xib */; };
+		A7B69C8F2B903071004D836A /* PizzaMakerOptionsSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B69C8E2B903071004D836A /* PizzaMakerOptionsSelectorViewModel.swift */; };
+		A7B69C912B9031D0004D836A /* PizzaNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B69C902B9031D0004D836A /* PizzaNavigator.swift */; };
 		A7C50DE32B8C1F080064F302 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C50DE22B8C1F080064F302 /* CartItem.swift */; };
 		A7C50DE52B8C20AF0064F302 /* CartItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C50DE42B8C20AF0064F302 /* CartItemViewModel.swift */; };
 		A7CB36192B8AEFDD00A70904 /* CartHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CB36172B8AEFDD00A70904 /* CartHeaderCell.swift */; };
@@ -155,6 +173,24 @@
 		A7B5D0B72B8CB7DB00313232 /* HomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCase.swift; sourceTree = "<group>"; };
 		A7B5D0B92B8CB7F000313232 /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
 		A7B5D0BB2B8CB80200313232 /* PizzaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaRepository.swift; sourceTree = "<group>"; };
+		A7B69C6A2B902DC2004D836A /* PizzaMakerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaMakerVC.swift; sourceTree = "<group>"; };
+		A7B69C6B2B902DC2004D836A /* PizzaMakerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PizzaMakerVC.xib; sourceTree = "<group>"; };
+		A7B69C702B902DFF004D836A /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		A7B69C712B902DFF004D836A /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
+		A7B69C742B902E60004D836A /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		A7B69C752B902E60004D836A /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
+		A7B69C782B902EAD004D836A /* CategoriesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDataSource.swift; sourceTree = "<group>"; };
+		A7B69C7A2B902ED1004D836A /* CategoriesItemsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesItemsDataSource.swift; sourceTree = "<group>"; };
+		A7B69C7C2B902EFE004D836A /* PizzaMakerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaMakerViewModel.swift; sourceTree = "<group>"; };
+		A7B69C7E2B902F20004D836A /* PizzaCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaCategoryViewModel.swift; sourceTree = "<group>"; };
+		A7B69C802B902F4C004D836A /* PizzaCategoryItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaCategoryItemViewModel.swift; sourceTree = "<group>"; };
+		A7B69C822B902F67004D836A /* PizzaOptionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaOptionsViewModel.swift; sourceTree = "<group>"; };
+		A7B69C852B902F9C004D836A /* PizzaOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaOptions.swift; sourceTree = "<group>"; };
+		A7B69C872B902FB0004D836A /* PizzaCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaCategory.swift; sourceTree = "<group>"; };
+		A7B69C892B90304F004D836A /* PizzaMakerOptionsSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaMakerOptionsSelectorVC.swift; sourceTree = "<group>"; };
+		A7B69C8A2B90304F004D836A /* PizzaMakerOptionsSelectorVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PizzaMakerOptionsSelectorVC.xib; sourceTree = "<group>"; };
+		A7B69C8E2B903071004D836A /* PizzaMakerOptionsSelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaMakerOptionsSelectorViewModel.swift; sourceTree = "<group>"; };
+		A7B69C902B9031D0004D836A /* PizzaNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaNavigator.swift; sourceTree = "<group>"; };
 		A7C50DE22B8C1F080064F302 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		A7C50DE42B8C20AF0064F302 /* CartItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemViewModel.swift; sourceTree = "<group>"; };
 		A7CB36172B8AEFDD00A70904 /* CartHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartHeaderCell.swift; sourceTree = "<group>"; };
@@ -337,6 +373,7 @@
 		A742934E2B7E136F0092A3E1 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				A7B69C632B902CDF004D836A /* PizzaGenerator */,
 				A766ABF32B8A562200B7C70E /* Cart */,
 				A70196912B84D61F00CB741F /* ItemDetails */,
 				A742934F2B7E13780092A3E1 /* Home */,
@@ -547,6 +584,109 @@
 			path = HomeRepository;
 			sourceTree = "<group>";
 		};
+		A7B69C632B902CDF004D836A /* PizzaGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				A7B69C642B902CF5004D836A /* Scenes */,
+			);
+			path = PizzaGenerator;
+			sourceTree = "<group>";
+		};
+		A7B69C642B902CF5004D836A /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A7B69C662B902D18004D836A /* PizzaMakerOptionsSelectorVC */,
+				A7B69C652B902D0E004D836A /* PizzaMakerVC */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		A7B69C652B902D0E004D836A /* PizzaMakerVC */ = {
+			isa = PBXGroup;
+			children = (
+				A7B69C692B902DA0004D836A /* ViewModel */,
+				A7B69C6A2B902DC2004D836A /* PizzaMakerVC.swift */,
+				A7B69C6B2B902DC2004D836A /* PizzaMakerVC.xib */,
+				A7B69C682B902D92004D836A /* DataSources */,
+				A7B69C672B902D88004D836A /* Cells */,
+			);
+			path = PizzaMakerVC;
+			sourceTree = "<group>";
+		};
+		A7B69C662B902D18004D836A /* PizzaMakerOptionsSelectorVC */ = {
+			isa = PBXGroup;
+			children = (
+				A7B69C8D2B90305C004D836A /* ViewModel */,
+				A7B69C892B90304F004D836A /* PizzaMakerOptionsSelectorVC.swift */,
+				A7B69C8A2B90304F004D836A /* PizzaMakerOptionsSelectorVC.xib */,
+			);
+			path = PizzaMakerOptionsSelectorVC;
+			sourceTree = "<group>";
+		};
+		A7B69C672B902D88004D836A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A7B69C6F2B902DE4004D836A /* ItemCell */,
+				A7B69C6E2B902DD9004D836A /* CategoryCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A7B69C682B902D92004D836A /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				A7B69C782B902EAD004D836A /* CategoriesDataSource.swift */,
+				A7B69C7A2B902ED1004D836A /* CategoriesItemsDataSource.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		A7B69C692B902DA0004D836A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A7B69C7C2B902EFE004D836A /* PizzaMakerViewModel.swift */,
+				A7B69C822B902F67004D836A /* PizzaOptionsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A7B69C6E2B902DD9004D836A /* CategoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				A7B69C7E2B902F20004D836A /* PizzaCategoryViewModel.swift */,
+				A7B69C702B902DFF004D836A /* CategoryCell.swift */,
+				A7B69C712B902DFF004D836A /* CategoryCell.xib */,
+			);
+			path = CategoryCell;
+			sourceTree = "<group>";
+		};
+		A7B69C6F2B902DE4004D836A /* ItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				A7B69C742B902E60004D836A /* ItemCell.swift */,
+				A7B69C752B902E60004D836A /* ItemCell.xib */,
+				A7B69C802B902F4C004D836A /* PizzaCategoryItemViewModel.swift */,
+			);
+			path = ItemCell;
+			sourceTree = "<group>";
+		};
+		A7B69C842B902F8C004D836A /* PizzaMaker */ = {
+			isa = PBXGroup;
+			children = (
+				A7B69C852B902F9C004D836A /* PizzaOptions.swift */,
+				A7B69C872B902FB0004D836A /* PizzaCategory.swift */,
+			);
+			path = PizzaMaker;
+			sourceTree = "<group>";
+		};
+		A7B69C8D2B90305C004D836A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A7B69C8E2B903071004D836A /* PizzaMakerOptionsSelectorViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		A7C50DE62B8C26850064F302 /* CartManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -597,6 +737,7 @@
 		A7D534122B831B070057A327 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A7B69C842B902F8C004D836A /* PizzaMaker */,
 				A743FA802B8C73C800F02AEB /* NetworkModels */,
 				A7D534132B831B1E0057A327 /* Product.swift */,
 				A7E5E6A52B876D50002AF645 /* Size.swift */,
@@ -630,6 +771,7 @@
 			children = (
 				A7D5341E2B833CA00057A327 /* MainNavigator.swift */,
 				A766ABFC2B8A5A1800B7C70E /* CartNavigator.swift */,
+				A7B69C902B9031D0004D836A /* PizzaNavigator.swift */,
 			);
 			path = Navigators;
 			sourceTree = "<group>";
@@ -811,16 +953,20 @@
 				A70196952B84D64D00CB741F /* ItemDetailsViewController.xib in Resources */,
 				A7E5E6B12B876E8A002AF645 /* PizzaOptionsView.xib in Resources */,
 				A742931F2B7E05E40092A3E1 /* Assets.xcassets in Resources */,
+				A7B69C6D2B902DC2004D836A /* PizzaMakerVC.xib in Resources */,
+				A7B69C772B902E60004D836A /* ItemCell.xib in Resources */,
 				A74293532B7E138A0092A3E1 /* HomeViewController.xib in Resources */,
 				A766ABFB2B8A568500B7C70E /* Cart.storyboard in Resources */,
 				A7CB36212B8AF08500A70904 /* CartItemCell.xib in Resources */,
 				A7E5E6AC2B876DC9002AF645 /* SizeItemCell.xib in Resources */,
+				A7B69C8C2B90304F004D836A /* PizzaMakerOptionsSelectorVC.xib in Resources */,
 				A7E5E69F2B876C80002AF645 /* SizesSelectorView.xib in Resources */,
 				A742935B2B7E23820092A3E1 /* SliderCollectionViewCell.xib in Resources */,
 				A7E5E6952B876B22002AF645 /* QuantityView.xib in Resources */,
 				A7CB361A2B8AEFDD00A70904 /* CartHeaderCell.xib in Resources */,
 				A7CB36252B8AF0AC00A70904 /* CartFooterCell.xib in Resources */,
 				A7D534112B8312CE0057A327 /* PopularTableViewCell.xib in Resources */,
+				A7B69C732B902DFF004D836A /* CategoryCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -954,6 +1100,7 @@
 				A701969C2B84F09000CB741F /* ProductViewModel.swift in Sources */,
 				A743FA7F2B8C482000F02AEB /* Slider.swift in Sources */,
 				A766ABFD2B8A5A1800B7C70E /* CartNavigator.swift in Sources */,
+				A7B69C882B902FB0004D836A /* PizzaCategory.swift in Sources */,
 				A7A407E42B7E28D8000DA449 /* UITableView+Extensions.swift in Sources */,
 				A7D534192B832D4C0057A327 /* CustomTabBar.swift in Sources */,
 				A7B5D0BA2B8CB7F000313232 /* HomeRepository.swift in Sources */,
@@ -963,6 +1110,8 @@
 				A7A407E22B7E28D8000DA449 /* UIView+Extensions.swift in Sources */,
 				A7F31A862B875E62008278A4 /* AppStoryboard.swift in Sources */,
 				A7B5D0BC2B8CB80200313232 /* PizzaRepository.swift in Sources */,
+				A7B69C7F2B902F20004D836A /* PizzaCategoryViewModel.swift in Sources */,
+				A7B69C832B902F67004D836A /* PizzaOptionsViewModel.swift in Sources */,
 				A7E5E68C2B8768BB002AF645 /* PizzaButton.swift in Sources */,
 				A7D5341C2B8338870057A327 /* AppCoordinator.swift in Sources */,
 				A70196942B84D64D00CB741F /* ItemDetailsViewController.swift in Sources */,
@@ -986,24 +1135,35 @@
 				A7E5E69A2B876BA9002AF645 /* PIZZATextView.swift in Sources */,
 				A7D5341F2B833CA00057A327 /* MainNavigator.swift in Sources */,
 				A7D534262B8347F50057A327 /* BaseWireframe.swift in Sources */,
+				A7B69C8B2B90304F004D836A /* PizzaMakerOptionsSelectorVC.swift in Sources */,
 				A766ABF92B8A567400B7C70E /* CartViewModel.swift in Sources */,
 				A7D534222B833CC90057A327 /* Navigator.swift in Sources */,
 				A743FA892B8C743900F02AEB /* FeedRouter.swift in Sources */,
 				A7D534172B8324440057A327 /* CustomTabBarController.swift in Sources */,
+				A7B69C792B902EAD004D836A /* CategoriesDataSource.swift in Sources */,
 				A743FA8B2B8C743900F02AEB /* NetworkConstants.swift in Sources */,
 				A743FA7D2B8C38D300F02AEB /* CartHeaderViewModel.swift in Sources */,
+				A7B69C762B902E60004D836A /* ItemCell.swift in Sources */,
+				A7B69C862B902F9C004D836A /* PizzaOptions.swift in Sources */,
 				A7A407DC2B7E28BC000DA449 /* UICollectionView+Extensions.swift in Sources */,
 				A743FA7B2B8C275C00F02AEB /* CartManager.swift in Sources */,
 				A7D534252B8347F50057A327 /* BaseViewModel.swift in Sources */,
+				A7B69C812B902F4C004D836A /* PizzaCategoryItemViewModel.swift in Sources */,
 				A7A407E12B7E28D8000DA449 /* UIStackView+Extensions.swift in Sources */,
 				A7CB36242B8AF0AC00A70904 /* CartFooterCell.swift in Sources */,
+				A7B69C7D2B902EFE004D836A /* PizzaMakerViewModel.swift in Sources */,
 				A70196992B84D69A00CB741F /* ItemDetailsViewModel.swift in Sources */,
 				A7CB36192B8AEFDD00A70904 /* CartHeaderCell.swift in Sources */,
+				A7B69C7B2B902ED1004D836A /* CategoriesItemsDataSource.swift in Sources */,
 				A74293522B7E138A0092A3E1 /* HomeViewController.swift in Sources */,
+				A7B69C722B902DFF004D836A /* CategoryCell.swift in Sources */,
+				A7B69C6C2B902DC2004D836A /* PizzaMakerVC.swift in Sources */,
 				A7E5E69D2B876C74002AF645 /* SizesSelectorView.swift in Sources */,
 				A742935A2B7E23820092A3E1 /* SliderCollectionViewCell.swift in Sources */,
 				A7E5E6A12B876CA4002AF645 /* SizesSelectorViewModel.swift in Sources */,
 				A7D534142B831B1E0057A327 /* Product.swift in Sources */,
+				A7B69C8F2B903071004D836A /* PizzaMakerOptionsSelectorViewModel.swift in Sources */,
+				A7B69C912B9031D0004D836A /* PizzaNavigator.swift in Sources */,
 				A7B5D0B22B8C8F1B00313232 /* PopularItemViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,7 +12,7 @@ protocol CoordinatorProtocol{
     var Main: MainNavigator { get }
     var navigationController: UINavigationController?{ get }
     var Cart: CartNavigator { get }
-//    var Pizza: PizzaNavigator { get }
+    var Pizza: PizzaNavigator { get }
     var tabBar: CustomTabBarController { get }
     func dismiss()
     var subCoordinator: CoordinatorProtocol { get }
@@ -34,9 +34,9 @@ class AppCoordinator: CoordinatorProtocol{
         return .init(coordinator: self)
     }()
     
-//    lazy var Pizza: PizzaNavigator = {
-//        return .init(coordinator: self)
-//    }()
+    lazy var Pizza: PizzaNavigator = {
+        return .init(coordinator: self)
+    }()
     
     lazy var subCoordinator: CoordinatorProtocol = {
         return AppCoordinator(window: window, isSub: true)

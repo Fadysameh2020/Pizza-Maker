@@ -37,10 +37,16 @@ class HomeViewModel: BaseViewModel, HomeViewModelProtocol {
     
     let disposeBag = DisposeBag()
     
-    let homeRepository: HomeRepositoryProtocol
+    let homeUseCase: HomeUseCase
     
-    init(homeRepository: HomeRepositoryProtocol = HomeRepositoryImplementation()) {
-        self.homeRepository = homeRepository
+//    let homeRepository: HomeRepositoryProtocol
+    
+//    init(homeRepository: HomeRepositoryProtocol = HomeRepositoryImplementation()) {
+//        self.homeRepository = homeRepository
+//    }
+    
+    init(homeUseCase: HomeUseCase) {
+        self.homeUseCase = homeUseCase
     }
     
     
@@ -81,7 +87,7 @@ class HomeViewModel: BaseViewModel, HomeViewModelProtocol {
     // Network Calls
     private func fetchSliderData(){
         isLoading.onNext(true)
-        homeRepository.fetchSliderData().subscribe { [weak self] (items) in
+        self.homeUseCase.executeSliderFetch().subscribe { [weak self] (items) in
             guard let self = self else {return}
             self.slides.accept(items.map(SliderViewModel.init))
             self.isLoading.onNext(false)
@@ -98,7 +104,7 @@ class HomeViewModel: BaseViewModel, HomeViewModelProtocol {
     
     private func fetchPopularData(){
         isLoading.onNext(true)
-        homeRepository.fetchPopularItemsData().subscribe { [weak self] (items) in
+        self.homeUseCase.executePopularFetch().subscribe { [weak self] (items) in
             guard let self = self else {return}
             let slidesModels = items
             self.popularItems.accept(slidesModels.map(ProductViewModel.init))
